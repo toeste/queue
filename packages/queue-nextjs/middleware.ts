@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { NextRequest } from 'next/server'
 import Bottleneck from 'bottleneck';
-import { Sessions, getSession, updateSessionStatus } from './session';
+import { getSession, updateSessionStatus } from './session';
 
 const LOG = console.log;
 
@@ -24,7 +24,7 @@ limiter.on('done', (info: { options: { id: any; }; }) => {
 
 limiter.on('error', (error: any) => console.error(error));
 
-export async function middleware(request: NextRequest) {
+export async function queueRequests(request: NextRequest) {
   let response = NextResponse.next();
 
   const session = await getSession(request, response);
@@ -51,4 +51,4 @@ export async function middleware(request: NextRequest) {
   });
 }
 
-export default middleware;
+export default queueRequests;

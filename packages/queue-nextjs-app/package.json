@@ -15,7 +15,7 @@
     "react": "^18",
     "react-dom": "^18",
     "uuid": "^9.0.1",
-    "@tomoeste/queue": "workspace:*"
+    "@cvent/queue-nextjs": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^20",

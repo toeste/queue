@@ -6,16 +6,19 @@ export default function Queue({ params }: { params: { time: string } }) {
   const [remainingTime, setRemainingTime] = useState(waitTime);
 
   useEffect(() => {
-    const retries = parseInt(localStorage.getItem('retries') ?? '1');
+    let timeout;
+    const retries = parseInt(sessionStorage.getItem('retries') ?? '1');
 
     if (retries > 5) {
+      sessionStorage.setItem('retries', '1');
       throw new Error('Cannot enter event');
-    } else if (waitTime === 0) {
-      setTimeout(() => window.location.reload(), retries * 1000);
-      localStorage.setItem('retries', (retries + 1).toString());
+    } else if (remainingTime === 0) {
+      sessionStorage.setItem('retries', (retries + 1).toString());
+      timeout = setTimeout(() => window.location.reload(), retries * 1000);
     } else {
-      setTimeout(() => window.location.reload(), waitTime * 1000);
+      timeout = setTimeout(() => window.location.reload(), waitTime * 1000);
     }
+    return () => clearTimeout(timeout);
   }, [waitTime]);
 
   setInterval(() => {
