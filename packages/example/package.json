@@ -1,5 +1,5 @@
 {
-  "name": "@tomoeste/queue-app",
+  "name": "@cvent/queue-nextjs-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {

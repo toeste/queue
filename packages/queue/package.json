@@ -1,5 +1,5 @@
 {
-  "name": "@tomoeste/queue",
+  "name": "@cvent/queue-nextjs",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

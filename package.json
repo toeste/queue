@@ -1,5 +1,5 @@
 {
-  "name": "queue-mono",
+  "name": "@cvent/queue-mono",
   "version": "0.1.0",
   "private": true
 }
